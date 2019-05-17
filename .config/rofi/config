@@ -1,0 +1,7 @@
+rofi.lines: 6
+rofi.font: Roboto Mono 13
+rofi.hide-scrollbar: true
+rofi.width: 30
+rofi.padding: 20
+rofi.separator-style: solid
+rofi.theme: /usr/share/rofi/themes/gruvbox-dark.rasi

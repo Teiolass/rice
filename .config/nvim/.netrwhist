@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/teiolass/tmp'
+let g:netrw_dirhist_2='/home/teiolass/tmp/lab'
+let g:netrw_dirhist_3='/home/teiolass/tmp/lab/code'
+let g:netrw_dirhist_4='/home/teiolass/tmp/pen/relazione/.git'
+let g:netrw_dirhist_5='/home/teiolass/tmp/pen/relazione'

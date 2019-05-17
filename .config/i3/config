@@ -1,0 +1,333 @@
+# set the font
+font pango: Hack 11, FontAwesome 11
+
+# used to hide the window borders on the margin of the screen
+# hide_edge_borders both
+
+# useful variable to set the wallpaper
+# set $wallpaper /home/teiolass/Pictures/Wallpapers/undoing.png
+set $lock_paper /home/teiolass/Pictures/Wallpapers/a_bunch_of_rocks.png
+set $wallpaper /home/teiolass/Pictures/Wallpapers/sphere.png
+
+
+
+# Common key variables
+set $up k
+set $down j
+set $left h
+set $right l
+set $mod Mod4
+
+# Useful shortcuts for common programs
+bindsym $mod+g exec firefox
+bindsym $mod+n exec nautilus
+bindsym $mod+m exec zathura
+bindsym $mod+y exec spotify
+bindsym $mod+t exec /home/teiolass/tmp/sfml/timer-s/timer
+bindsym $mod+Return exec urxvt
+bindsym $mod+d exec "/home/teiolass/.scripts/i3-dmenu.sh"
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# kill focused window
+bindsym $mod+q kill
+
+############################
+####                    #### 
+####  MOVEMENT THINGS   ####
+####                    ####
+############################
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+c split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+#change keyboard layout
+bindsym $mod+Shift+t exec chkbd
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+#### SPOTIFY keybindings ####
+# bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause; playerctl play-pause"
+# bindsym XF86AudioPause exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause; playerctl play-pause"
+# bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next; playerctl next"
+# bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous playerctl previous"
+#
+# THIS SHOULD WORK WITH EVERY APP
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+
+
+#######################
+####               ####
+####   WORKSPACES  ####
+####               ####
+#######################
+set $wk1 ""
+set $wk2 ""
+set $wk3 ""
+set $wk4 ""
+set $wk5 ""
+set $wk6 ""
+set $wk7 ""
+set $wk8 ""
+set $wk9 ""
+set $wk0 ""
+
+# switch to workspace
+bindsym $mod+1 workspace $wk1
+bindsym $mod+2 workspace $wk2
+bindsym $mod+3 workspace $wk3
+bindsym $mod+4 workspace $wk6
+bindsym $mod+5 workspace $wk7
+bindsym $mod+6 workspace $wk8
+bindsym $mod+7 workspace $wk4
+bindsym $mod+8 workspace $wk9
+bindsym $mod+9 workspace $wk0
+bindsym $mod+0 workspace $wk5
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $wk1 
+bindsym $mod+Shift+2 move container to workspace $wk2
+bindsym $mod+Shift+3 move container to workspace $wk3
+bindsym $mod+Shift+4 move container to workspace $wk6
+bindsym $mod+Shift+5 move container to workspace $wk7
+bindsym $mod+Shift+6 move container to workspace $wk8
+bindsym $mod+Shift+7 move container to workspace $wk4
+bindsym $mod+Shift+8 move container to workspace $wk9
+bindsym $mod+Shift+9 move container to workspace $wk0
+bindsym $mod+Shift+0 move container to workspace $wk5
+
+
+# SYSTEM THINGS
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+# RESIZE MODE
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+
+##
+## COLORS
+##
+
+
+# set primary gruvbox colorscheme colors
+#
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021 
+
+
+# green gruvbox
+# class                 border|backgr|text|indicator|child_border
+client.focused          $green $green $darkgray $aqua $aqua
+client.focused_inactive $darkgray $darkgray $yellow $yellow $yellow
+client.unfocused        $darkgray $darkgray $yellow $yellow $yellow
+client.urgent           $red $red $white $red $red
+
+# blue gruvbox
+# class                 border|backgr|text|indicator|child_border
+# client.focused          $blue $blue $darkgray $purple $darkgray
+# client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+# client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+# client.urgent $red $red $white $red $red
+
+
+
+# BAR THINGS
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	position top
+        font pango:Roboto Mono, FontAwesome 11
+
+	colors {
+        background $darkgray
+        separator  $yellow
+        statusline $yellow
+        focused_workspace    $yellow $yellow $darkgray
+        inactive_workspace   $bg $bg $yellow
+        active_workspace     $bg $bg $yellow
+        urgent_workspace     $red $red $bg
+    }
+}
+
+# Set i3lock
+bindsym $mod+Shift+p exec "/home/teiolass/.scripts/lock2 $lock_paper"
+exec "/home/teiolass/.scripts/lock2 $lock_paper"
+
+
+# ACTION KEYS
+# Just don't ask
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Brightness control
+# Requires package: xorg-xbacklight
+bindsym XF86MonBrightnessUp exec xbacklight -inc 12 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 12 # decrease screen brightness
+
+# Strange things that make system work & bg
+exec_always feh --bg-scale $wallpaper
+exec_always xrdb ~/.Xresources
+exec_always export PATH=${PATH):${HOME}/.scripts
+exec --no-startup-id dunst -config /home/teiolass/.config/dunst/dunstrc
+
+# To find the class: use xprop and click on the window you want
+# assign [class="Firefox"] $wk1
+for_window [class="Spotify"] move to workspace $wk5, focus
+for_window [class="gogglesmm"] move to workspace $wk5
+for_window [title="Timer"] floating enable
+for_window [title="Timer"] move to workspace $wk4, focus
+
+# Border things
+for_window [class="urxvt"] border pixel 10
+new_window pixel 4
+
+
+# GAAAAPS
+
+# smart_gaps on
+# smart_borders on
+set $mode_gaps Gaps: (o) outer, (i) inner, (n) normal
+set $mode_gaps_outer Outer Gaps: Use l/k (Shift for global)
+set $mode_gaps_inner Inner Gaps: Use l/k (Shift for global)
+set $mode_gaps_normal Normal mode a/0
+set $mode_borde Border: k/l
+bindsym $mod+b mode "$mode_gaps"
+gaps inner 20
+gaps outer 30
+        
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym n      mode "$mode_gaps_normal"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_normal" {
+        bindsym a exec "i3-msg gaps inner current set 20 && i3-msg gaps outer current set 30"
+        bindsym 0 exec "i3-msg gaps inner current set 0 && i3-msg gaps outer current set 0"
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym l  gaps inner current plus 5
+        bindsym k gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+l  gaps inner all plus 5
+        bindsym Shift+k gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym l  gaps outer current plus 5
+        bindsym k gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+l  gaps outer all plus 5
+        bindsym Shift+k gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
