@@ -4,13 +4,13 @@ from PIL import Image
 # import argparse
 
 
-name = 'albero'
-extension = 'png'
+name = 'fire_keeper2'
+extension = 'jpg'
 img_path = '/home/teiolass/Downloads/'
 full_img_path = img_path + name + '.' + extension
 save_path = img_path + name + '-recolored.' + extension
 
-theme = 'creme'
+theme = 'gruvbox'
 
 screen_size = (1920, 1080)
 
@@ -51,7 +51,7 @@ im = im.convert('L')
 im = im.resize((int(resize_ratio*im.size[0]),int(resize_ratio*im.size[1])), Image.ANTIALIAS)
 newimdata = []
 for color in im.getdata():
-   newimdata.append(blend(color1, color2, color))
+   newimdata.append(blend(color2, color1, color))
    # newimdata.append((color,color,color))
 newim = Image.new('RGB', im.size)
 newim.putdata(newimdata)

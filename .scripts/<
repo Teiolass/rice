@@ -1,0 +1,11 @@
+from time import sleep
+import os
+
+
+cmd = 'acpi'
+vol = os.popen(cmd).read()
+vol = vol.split(',')[1]
+vol = vol[1:4]
+print(' ' + vol)
+sleep(0.1)
+

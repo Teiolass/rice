@@ -75,7 +75,12 @@ old=(${old//;/ })
 time_diff=$(( $time - ${old[0]} ))
 
 # sanity check: has a positive amount of time passed
-[[ "${time_diff}" -gt 0 ]] || exit
+# [[ "${time_diff}" -gt 0 ]] || exit
+if ! [[ "${time_diff}" -gt 0 ]]; then
+    echo -n "nothing new"
+    exit
+fi
+
 
 # calc bytes transferred, and their rate in byte/s
 rx_diff=$(( $rx - ${old[1]} ))
@@ -105,3 +110,4 @@ if hash bc 2>/dev/null && [[ "$tx_rate" -gt 1048576 ]]; then
 else
   echo -n "${tx_kib}K"
 fi
+echo ""

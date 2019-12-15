@@ -1,9 +1,9 @@
-import alsaaudio as alsa
 from time import sleep
+import os
 
-m = alsa.Mixer()
-vol = m.getvolume()
 
-print(' ' + str(vol[0]) + '%')
+cmd = 'amixer sget Master | grep \'Right:\' | awk -F\'[][]\' \'{ print $2 }\''
+vol = os.popen(cmd).read()
+print(' ' + vol)
 sleep(0.1)
 
